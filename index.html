@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RPG generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.72/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.72/vfs_fonts.js"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<header class="site-header">
+  <div class="brand">
+<div class="brand-mark">
+  <img src="assets/img/logo.png" alt="Korbacz Bobołaka" class="brand-logo">
+</div>
+
+    <div class="brand-text">
+      <h1>Plugawa Wyrocznia</h1>
+      <p class="brand-subtitle">
+        Tajemnice, osobistości i rozmaite potworności.
+      </p>
+    </div>
+  </div>
+</header>
+<div id="form-container" class="container generator-panel">
+        <div class="row">
+            <div class="col" id="select-column">
+                <select name="kategoria" id="kategoria" class="input form-select">
+
+                    <option value="MBUnheroicFeats">Atuty - Mörk Borg</option>
+                    <option value="Goal">Cele postaci</option>
+                    <option value="whatConnectsUs">Co nas łączy? - Mörk Borg</option>
+                    <option value="MBCorpseLoot">Grabienie zwłok - Mörk Borg</option>
+                    <option value="MBNames">Imiona - Mörk Borg</option>
+                    <option value="MBNobleNames">Imiona arystokratyczne- Mörk Borg</option>
+                    <!-- <option value="VOTENobleNames">Imiona arystokratyczne - VotE</option> -->
+                    <option value="MBPaleOneNames">Imiona Bladawców - Mörk Borg</option>
+                    <!-- <option value="maleGaelicNames">Imiona celtyckie - męskie</option>
+                    <option value="wizardNames">Imiona czarodziejów - Pamiętliwe Krainy</option>
+                    <option value="maleLatinNames">Imiona łacińskie - męskie</option>
+                    <option value="crusaderNames">Imiona krzyżowców</option>
+                    <option value="WHFMaleHumanNames">Imiona męskie - Warhammer Fantasy</option>
+                    <option value="unsulliedNames">Imiona Nieskalanych - ASOIAF (eng.)</option>
+                    <option value="orkishNames">Imiona orków</option>
+                    <option value="maleRussianNames">Imiona rosyjskie - męskie (transl. ang.)</option>
+                    <option value="maleSlavicNames">Imiona słowiańskie - męskie</option>
+                    <option value="mercenaryCompanies">Kompanie najemników (eng.)</option> -->
+                    <option value="MBRandomDiscoveriesCivilized">Losowe odkrycia cywilizacja - Mörk Borg</option>
+                    <option value="MBRandomDiscoveriesWilderness">Losowe odkrycia dzicz - Mörk Borg</option>
+                    <option value="MBRandomEncountersCivilized">Losowe spotkania cywilizacja - Mörk Borg</option>
+                    <option value="MBRandomEncountersWilderness">Losowe spotkania dzicz - Mörk Borg</option>
+                    <option value="MBTownEncounters">Losowe spotkania w mieście - Mörk Borg</option>
+                    <option value="currentEnemy">Łupieżca z lodowych pustkowi</option>
+                    <!-- 
+            <option value="MBRandomEncountersGravenTosk">Losowe spotkania - Graven-Tosk - MB</option>
+            <option value="MBRandomEncountersShadowKing">Losowe spotkania - Pałac Króla Cieni - MB</option>
+            <option value="MBRandomEncountersSarkash">Losowe spotkania - Sarkash - MB</option>
+            <option value="MBRandomEncounters">Losowe spotkania - Tveland - MB</option> -->
+                    <option value="MBArcaneCatastrophes">Magiczne katastrofy - Mörk Borg</option>
+                    <option value="MBDeadGod">Martwy Bóg - Mörk Borg</option>
+                    <option value="MBTowns">Miasta, nazwy - Mörk Borg</option>
+                    <option value="MBTownsDesc">Miejscowości - Mörk Borg</option>
+                    <option value="mutations">Mutacje</option>
+                    <option value="MBFollower">Najmita - Mörk Borg</option>
+                    <option value="wildClanNames">Nazwy dzikich klanów</option>
+                    <option value="tavernNames">Nazwy Karczm</option>
+                    <option value="MBCultNames">Nazwy Kultów - Mörk Borg</option>
+                    <option value="MBMiseriesEN">Niedole - Mörk Borg (eng.)</option>
+                    <option value="MBMiseriesPL">Niedole - Mörk Borg (pl.)</option>
+                    <option value="MBTroublingTales">Niepokojące historie - Mörk Borg</option>
+                    <option value="unfriendlyUndead">Nieprzyjazny nieumarły - Mörk Borg (Kill Your Necromancer)</option>
+                    <!-- <option value="description">Opis fabularny</option> -->
+                    <option value="MBTerribleTraits">Okropne cechy - Mörk Borg</option>
+                    <option value="MBClasslessOrigin">Pochodzenie postaci bezklasowej - Mörk Borg</option>
+                    <option value="MBWeather">Pogoda - Mörk Borg</option>
+                    <option value="MBCharacter" selected>Postać - Mörk Borg</option>
+                    <option value="MBMonsters">Potwory - Mörk Borg</option>
+                    <option value="medievalProfessions">Profesja średniowieczna</option>
+                    <option value="MBTreasure">Skarby - Mörk Borg</option>
+                    <option value="MBBrokenBodies">Zniszczone ciała - Mörk Borg</option>
+                    <option value="MBBadHabits">Złe nawyki - Mörk Borg</option>
+                    <option value="MBUncleanScroll">Zwój (przeklęty) - Mörk Borg</option>
+                    <option value="MBSacredScroll">Zwój (święty) - Mörk Borg</option>
+
+
+
+                </select>
+            </div>
+            <div class="col">
+                <input type=number id="liczba" value="1" min="1" class="input form-control">
+
+            </div>
+            <div class="col">
+                <button id='generate-button' class="input btn btn-dark">Generuj</button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container result-panel">
+        <table class="table table-striped">
+            <tbody id="name-display"></tbody>
+        </table>
+    </div>
+
+    <div class="container footer-container mt-auto">
+        <footer class = "invisible">
+            <p>This generator is an independent production by <a href="http://linktr.ee/hrexandro">Hrexandro</a> and is not affiliated with Ockult Örtmästare Games or Stockholm Kartell. It is published under the MÖRK BORG Third Party License.</p>
+            <p>MÖRK BORG is copyright Ockult Örtmästare Games and Stockholm Kartell.</p>
+          </footer>
+          <footer>
+            <p><strong><a href="https://korbaczrpg.blogspot.com/">Korbacz Bobołaka - korbaczrpg.blogspot.com</a>. <a href="https://twitter.com/hrexandro">@hrexandro</a></strong></p>
+          </footer>
+    </div>
+
+
+    <script src='script.js' type="module"></script>
+</body>
+
+
+</html>
