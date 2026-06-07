@@ -73,8 +73,8 @@ function updateSecondarySelectStatus() {
     ///
     MBCharacterClassPicker.classList.add("form-select");
     ///
-    addOption("Postać bezklasowa");
     addOption("Losowa klasa");
+    addOption("Postać bezklasowa");
     addOption("Bladawiec");
     addOption("Ezoteryczny pustelnik");
     addOption("Hardy kowal");
