@@ -228,7 +228,7 @@ body::before {
 #generate-button:hover {
   color: var(--ink);
   background: var(--white);
-  transform: translate(-1px, -1px);
+  /* transform: translate(-1px, -1px); */
   box-shadow: 5px 5px 0 #000;
 }
 
